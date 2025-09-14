@@ -1,0 +1,13 @@
+name: main-workflow
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  test:
+    uses: ./.github/workflows/01-analyze-test.yml
+
