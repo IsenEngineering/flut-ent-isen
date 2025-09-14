@@ -6,12 +6,11 @@ import '../../model/notation.dart';
 import '../../services/api_service.dart';
 import '../../services/cache.dart';
 import '../../services/token_service.dart';
-import '../../widgets/hamburger_menu.dart';
 import 'note_detail.dart'; // Importer la nouvelle classe
 import 'package:auto_size_text/auto_size_text.dart';
 
 class NotesScreen extends StatefulWidget {
-  const NotesScreen({Key? key}) : super(key: key);
+  const NotesScreen({super.key});
 
   @override
   _NotesScreenState createState() => _NotesScreenState();

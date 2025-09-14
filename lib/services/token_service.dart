@@ -1,7 +1,7 @@
 
 //Classe qui va gérer le token
 class TokenManager {
-  static TokenManager _instance = TokenManager._internal();
+  static final TokenManager _instance = TokenManager._internal();
   late String _token;
   TokenManager._internal();
 

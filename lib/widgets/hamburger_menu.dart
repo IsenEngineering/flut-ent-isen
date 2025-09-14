@@ -1,5 +1,4 @@
 import 'package:flut/screens/home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,7 +15,7 @@ class HamburgerMenu extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          Container(
+          SizedBox(
             height: 200, // specify the height
             width: 300, // specify the width
             child: DrawerHeader(

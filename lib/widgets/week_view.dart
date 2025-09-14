@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,14 +7,14 @@ class WeekView extends StatelessWidget {
   final ScrollController scrollController = ScrollController();
   final double arrowWidth = 50; // Adjust this value as needed
 
-  WeekView({required this.onDaySelected, required this.selectedDay});
+  WeekView({super.key, required this.onDaySelected, required this.selectedDay});
 
   @override
   Widget build(BuildContext context) {
     DateTime originalSelectedDay = DateTime(selectedDay.year, selectedDay.month, selectedDay.day);
     DateTime startOfWeek = selectedDay.subtract(Duration(days: selectedDay.weekday - 1));
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       double maxScrollExtent = scrollController.position.maxScrollExtent;
       double dayWidth = 120;// Divide by 7 as there are 7 days in a week
       double selectedDayPosition = dayWidth * (originalSelectedDay.weekday - 1); // weekday starts from 1 (Monday)
@@ -31,7 +30,7 @@ class WeekView extends StatelessWidget {
       );
     });
 
-    return Container(
+    return SizedBox(
       height: 75, // Adjust this value as needed
       child: ListView.builder(
         controller: scrollController,

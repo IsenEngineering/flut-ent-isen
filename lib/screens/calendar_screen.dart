@@ -8,11 +8,10 @@ import '../services/cache.dart';
 import '../services/token_service.dart';
 import '../widgets/day_view.dart';
 import '../widgets/event_detail.dart';
-import '../widgets/week_view.dart';
 import '../model/calendar_event.dart';
 
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({Key? key}) : super(key: key);
+  const CalendarScreen({super.key});
 
   @override
   _CalendarScreenState createState() => _CalendarScreenState();
@@ -298,7 +297,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     child: TextButton(
                       onPressed: onSelectDay,
                       child: Text(
-                      "${DateFormat("E dd MMM yyyy", "fr-FR").format(selectedDay)}",
+                      DateFormat("E dd MMM yyyy", "fr-FR").format(selectedDay),
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge
                       )

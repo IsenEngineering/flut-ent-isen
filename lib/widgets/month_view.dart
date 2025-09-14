@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class MonthView extends StatelessWidget {
   final ValueChanged<DateTime> onDaySelected;
 
-  MonthView({required this.onDaySelected});
+  const MonthView({super.key, required this.onDaySelected});
 
   @override
   Widget build(BuildContext context) {

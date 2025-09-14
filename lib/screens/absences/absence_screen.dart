@@ -9,7 +9,7 @@ import 'absence_list.dart';
 import '../../services/cache.dart';
 
 class AbsenceView extends StatefulWidget {
-  const AbsenceView({Key? key}) : super(key: key);
+  const AbsenceView({super.key});
 
   @override
   _AbsenceViewState createState() => _AbsenceViewState();

@@ -2,8 +2,6 @@ import 'package:flut/screens/mentions_legales_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 
 import '../main.dart';
 import '../services/User_service.dart';
@@ -15,6 +13,8 @@ void main() async {
 }
 
 class LoginApp extends StatelessWidget {
+  const LoginApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,6 +32,8 @@ class LoginApp extends StatelessWidget {
 }
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }

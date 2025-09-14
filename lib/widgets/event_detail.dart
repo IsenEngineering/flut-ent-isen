@@ -9,7 +9,7 @@ import '../services/token_service.dart';
 class EventDetailMenu extends StatefulWidget {
   final CalendarEventDetails eventDetails;
 
-  const EventDetailMenu({ Key? key, required this.eventDetails }): super(key: key);
+  const EventDetailMenu({ super.key, required this.eventDetails });
 
   @override
   _EventDetailMenuState createState() => _EventDetailMenuState();
@@ -91,7 +91,7 @@ class _EventDetailMenuState extends State<EventDetailMenu> with TickerProviderSt
 class EventDetailView extends StatefulWidget {
   final CalendarEvent event;
 
-  const EventDetailView ({ Key? key, required this.event }): super(key: key);
+  const EventDetailView ({ super.key, required this.event });
 
   @override
   _EventDetailState createState() => _EventDetailState();

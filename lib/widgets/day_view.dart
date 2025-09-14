@@ -9,7 +9,7 @@ class DayView extends StatelessWidget {
       events; // This should be a list of events for the selected day
   final Future<void> Function() onRefresh;
 
-  DayView({
+  const DayView({super.key, 
     required this.date,
     required this.onEventSelected,
     required this.events,
@@ -44,7 +44,7 @@ class DayView extends StatelessWidget {
         child: Column(
           children: events.map((event) {
             List<String> eventDescriptions = event.title.split(" - ");
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height / 5,
               child: Card(
                 child: ListTile(
