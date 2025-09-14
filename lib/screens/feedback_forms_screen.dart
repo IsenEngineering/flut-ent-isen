@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 enum FeedbackFormOption{
-  BUG,
-  FEATURE
+  bug,
+  feature
 }
 
 class FeedbackFormsScreen extends StatelessWidget {
@@ -13,14 +13,14 @@ class FeedbackFormsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch(formOption) {
-      case FeedbackFormOption.BUG:
+      case FeedbackFormOption.bug:
         return Scaffold(
           appBar: AppBar(
             title: const Text('Rapport de bug'),
           ),
           body: const Center(child: Text("Coming soon"))
         );
-      case FeedbackFormOption.FEATURE:
+      case FeedbackFormOption.feature:
         return Scaffold(
           appBar: AppBar(
             title: const Text('Demande de fonctionnalité'),

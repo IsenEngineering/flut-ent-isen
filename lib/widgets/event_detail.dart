@@ -12,11 +12,11 @@ class EventDetailMenu extends StatefulWidget {
   const EventDetailMenu({ super.key, required this.eventDetails });
 
   @override
-  _EventDetailMenuState createState() => _EventDetailMenuState();
+  EventDetailMenuState createState() => EventDetailMenuState();
 
 }
 
-class _EventDetailMenuState extends State<EventDetailMenu> with TickerProviderStateMixin {
+class EventDetailMenuState extends State<EventDetailMenu> with TickerProviderStateMixin {
   late final TabController _tabController;
 
   late List<Widget> _screensList = [];
@@ -94,10 +94,10 @@ class EventDetailView extends StatefulWidget {
   const EventDetailView ({ super.key, required this.event });
 
   @override
-  _EventDetailState createState() => _EventDetailState();
+  EventDetailState createState() => EventDetailState();
 }
 
-class _EventDetailState extends State<EventDetailView> {
+class EventDetailState extends State<EventDetailView> {
   final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
   final String token = TokenManager.getInstance().getToken();
 

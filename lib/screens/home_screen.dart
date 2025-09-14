@@ -3,7 +3,7 @@ import 'package:flut/widgets/absences_caroussel.dart';
 import 'package:flut/widgets/next_events.dart';
 import 'package:flutter/material.dart';
 import '../model/notation.dart';
-import '../services/User_service.dart';
+import '../services/user_service.dart';
 import '../services/api_service.dart';
 import '../services/token_service.dart';
 import 'dart:async';
@@ -14,10 +14,10 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   final ApiService apiService =
       ApiService('https://api-ent.isenengineering.fr');
   final String token = TokenManager.getInstance().getToken();

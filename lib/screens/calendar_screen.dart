@@ -14,10 +14,10 @@ class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
   @override
-  _CalendarScreenState createState() => _CalendarScreenState();
+  CalendarScreenState createState() => CalendarScreenState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
+class CalendarScreenState extends State<CalendarScreen> {
   final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
   final String token = TokenManager.getInstance().getToken();
 

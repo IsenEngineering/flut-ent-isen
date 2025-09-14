@@ -9,14 +9,15 @@ class MainHandler extends StatefulWidget {
   const MainHandler({super.key});
 
   @override
-  _MainHandlerState createState() => _MainHandlerState();
+  MainHandlerState createState() => MainHandlerState();
 }
 
-class _MainHandlerState extends State<MainHandler> {
+class MainHandlerState extends State<MainHandler> {
   final _pageController = PageController();
 
   int _selectedPage = 0;
-  int _previousSelectedPage = 0;
+  // TODO: return button on Android should go back to previous selected page
+  // int _previousSelectedPage = 0;
   final List<Widget> _screensList = const <Widget>[
     HomeScreen(),
     CalendarScreen(),
@@ -27,7 +28,7 @@ class _MainHandlerState extends State<MainHandler> {
   void _onItemTap(int itemIndex) {
     setState(() {
         if (_selectedPage != itemIndex) {
-          _previousSelectedPage = _selectedPage;
+          // _previousSelectedPage = _selectedPage;
           _selectedPage = itemIndex;
         }
     });
@@ -36,7 +37,7 @@ class _MainHandlerState extends State<MainHandler> {
 
   void _onPageChanged(int itemIndex) {
     setState(() {
-      _previousSelectedPage = _selectedPage;
+      // _previousSelectedPage = _selectedPage;
       _selectedPage = itemIndex;
     });
   }

@@ -12,10 +12,10 @@ class AbsenceView extends StatefulWidget {
   const AbsenceView({super.key});
 
   @override
-  _AbsenceViewState createState() => _AbsenceViewState();
+  AbsenceViewState createState() => AbsenceViewState();
 }
 
-class _AbsenceViewState extends State<AbsenceView> {
+class AbsenceViewState extends State<AbsenceView> {
   final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
   final String token = TokenManager.getInstance().getToken();
 

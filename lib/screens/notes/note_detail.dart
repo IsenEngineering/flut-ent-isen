@@ -12,6 +12,7 @@ class NoteDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final ApiService apiService =
         ApiService('https://api-ent.isenengineering.fr');
+    final navigator = Navigator.of(context);
 
     return FutureBuilder<NotationClass>(
       future: _fetchNotationClass(code, apiService),
@@ -28,8 +29,7 @@ class NoteDetail extends StatelessWidget {
           // Une fois les données récupérées, afficher la feuille modale
           WidgetsBinding.instance.addPostFrameCallback((_) {
             _showNotationModal(context, snapshot.data!).then((_) {
-              Navigator.pop(
-                  context); // Fermer la page une fois la modale fermée
+              navigator.pop(); // Fermer la page une fois la modale fermée
             });
           });
 

@@ -13,10 +13,10 @@ class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});
 
   @override
-  _NotesScreenState createState() => _NotesScreenState();
+  NotesScreenState createState() => NotesScreenState();
 }
 
-class _NotesScreenState extends State<NotesScreen> {
+class NotesScreenState extends State<NotesScreen> {
   final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
   final String token = TokenManager.getInstance().getToken();
 
@@ -30,13 +30,13 @@ class _NotesScreenState extends State<NotesScreen> {
 
     _notationsFuture = apiService.fetchNotations(token);
   }
-
-  void _updateCache() async {
+  // TODO: redo cache management
+  /* void _updateCache() async {
     List<Notation> notations = await apiService.fetchNotations(token);
 
     String jsonString = jsonEncode(notations.map((e) => e.toJSON()).toList());
     await writeToCache(cacheFileName, jsonString);
-  }
+  } */
 
   Future<List<Notation>> _retrieveDataFromCache() async {
     String? cacheValue = await readFromCache(cacheFileName);

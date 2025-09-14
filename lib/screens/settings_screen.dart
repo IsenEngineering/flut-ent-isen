@@ -19,7 +19,8 @@ class SettingsScreen extends StatelessWidget {
             TextButton(
               child: Text("Ok"),
               onPressed: () {
-                Navigator.of(context).pop(); // Ferme le premier dialogue
+                final navigator = Navigator.of(context);
+                navigator.pop(); // Ferme le premier dialogue
 
                 // Vide le cache
                 readFromCache('login.cache').then((content) {
@@ -28,8 +29,7 @@ class SettingsScreen extends StatelessWidget {
                   }
 
                   // Retour à la page d'accueil après avoir vidé le cache
-                  Navigator.popUntil(
-                    context,
+                  navigator.popUntil(
                     ModalRoute.withName('/'), // Retour à la homepage
                   );
                 });
