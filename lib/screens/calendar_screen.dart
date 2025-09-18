@@ -11,15 +11,18 @@ import '../widgets/event_detail.dart';
 import '../model/calendar_event.dart';
 
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({super.key});
+  final ApiService? apiService;
+  final String? token;
+
+  const CalendarScreen({super.key, this.apiService, this.token});
 
   @override
   CalendarScreenState createState() => CalendarScreenState();
 }
 
 class CalendarScreenState extends State<CalendarScreen> {
-  final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
-  final String token = TokenManager.getInstance().getToken();
+  late final ApiService apiService;
+  late final String token;
 
   DateTime selectedDay = DateTime.now();
   CalendarEvent? selectedEvent; // Now CalendarEvent should be recognized
@@ -31,6 +34,10 @@ class CalendarScreenState extends State<CalendarScreen> {
   @override
   void initState() {
     super.initState();
+
+    apiService = widget.apiService ?? ApiService('https://api-ent.isenengineering.fr');
+    token = widget.token ?? TokenManager.getInstance().getToken();
+
     selectedDay = DateTime.now(); // Set selectedDay to the current day
     if (selectedDay.weekday == DateTime.sunday) {
       selectedDay = selectedDay.add(const Duration(days: 1));
