@@ -1,18 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:flut/screens/calendar_screen.dart';
 import 'package:flut/services/api_service.dart';
-import 'package:flut/model/calendar_event.dart';
+// import 'package:flut/model/calendar_event.dart';
 
 // --- MOCKS ---
 
 class MockApiService extends Mock implements ApiService {}
 
 void main() {
-  late MockApiService mockApi;
+  // late MockApiService mockApi;
 
   setUpAll(() async {
     registerFallbackValue(DateTime(2000)); // fallback for DateTime args
@@ -20,7 +19,7 @@ void main() {
   });
 
   setUp(() {
-    mockApi = MockApiService();
+    // mockApi = MockApiService();
   });
 
   group('CalendarScreenState - date helpers', () {
