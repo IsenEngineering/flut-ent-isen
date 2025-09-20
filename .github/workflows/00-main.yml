@@ -11,3 +11,28 @@ jobs:
   test:
     uses: ./.github/workflows/01-analyze-test.yml
 
+  # TODO: implement conventional release
+  # conventional-release:
+  #    needs:
+  #      - test-analyze
+  #    uses: ./.github/workflows/02-conventional-release.yml
+  #    secrets: inherit
+
+  # TODO: implement automatic screenshots
+  # parse-screenshot:
+  #    uses: ./.github/workflows/11-parse-screenshot.yml
+  #    with:
+  #      # Set to empty string to always take screenshots
+  #      screenshot-text: "SCREENSHOT"
+
+  build-android:
+    # set if false to disable android branch of build
+    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
+#    needs:
+#      - conventional-release
+#      - parse-screenshot
+    uses: ./.github/workflows/03-build-android.yml
+    with:
+      # screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
+      apk: "true"
+    secrets: inherit

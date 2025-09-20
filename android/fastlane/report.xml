@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00052985">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: google_play_track_version_codes" time="1.666895445">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: last_git_tag" time="0.007513377">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
