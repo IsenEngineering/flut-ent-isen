@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gem "abbrev"
+gem "ostruct"
+gem "pry"
+gem "fastlane"

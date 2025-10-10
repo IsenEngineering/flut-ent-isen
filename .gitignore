@@ -116,6 +116,7 @@ local.properties
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/fastlane/AuthKey.p8
 
 # macOS
 **/Flutter/ephemeral/
