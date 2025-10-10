@@ -44,9 +44,11 @@ platform :ios do
   lane :build do
     git_basic_auth = ENV['MATCH_GIT_BASIC_AUTHORIZATION']
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
+
+    build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{app_issuer_id} -authenticationKeyID #{app_key_id} -authenticationKeyPath #{app_key_filepath}"
     build_ios_app(
         export_method: 'app-store',
-        xcargs: '-allowProvisioningUpdates -authenticationKeyIssuerID #{app_issuer_id} -authenticationKeyID #{app_key_id} -authenticationKeyPath #{app_key_filepath}'
+        xcargs: build_xcargs
     )
   end
 
