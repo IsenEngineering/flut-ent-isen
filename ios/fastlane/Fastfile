@@ -43,7 +43,7 @@ platform :ios do
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
     build_ios_app(
         export_method: 'app-store',
-        export_team_id: 'GH578HKJW8'
+        xcargs: '-allowProvisioningUpdates'
     )
   end
 
