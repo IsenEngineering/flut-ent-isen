@@ -39,7 +39,8 @@ platform :ios do
   end
 
   lane :build do
-    match(type: 'appstore', readonly: is_ci)
+    git_basic_auth = ENV['MATCH_GIT_BASIC_AUTHORIZATION']
+    match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
     build_ios_app(
         export_method: 'app-store',
     )
