@@ -19,10 +19,13 @@ platform :ios do
 
   # Change this to match your app's key and issuer
   before_all do |lane, options|
+    app_key_id = 'B75F755Q64'
+    app_issuer_id = '777fd2ea-e0a9-4fe1-9cc8-212f634cb615'
+    app_key_filepath = './AuthKey.p8'
     app_store_connect_api_key(
-      key_id: 'B75F755Q64',
-      issuer_id: '777fd2ea-e0a9-4fe1-9cc8-212f634cb615',
-      key_filepath: './AuthKey.p8'
+      key_id: app_key_id,
+      issuer_id: app_issuer_id,
+      key_filepath: app_key_filepath
     )
     setup_ci if ENV['CI']
   end
@@ -43,7 +46,7 @@ platform :ios do
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
     build_ios_app(
         export_method: 'app-store',
-        xcargs: '-allowProvisioningUpdates'
+        xcargs: '-allowProvisioningUpdates -authenticationKeyIssuerID #{app_issuer_id} -authenticationKeyID #{app_key_id} -authenticationKeyPath #{app_key_filepath}'
     )
   end
 
