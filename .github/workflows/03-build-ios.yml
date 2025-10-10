@@ -71,8 +71,8 @@ jobs:
         env:
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.FLUT_IOS_CERTIFICATES_GH_TOKEN }}
           MATCH_PASSWORD: ${{ secrets.FLUT_IOS_CERTIFICATES_PASSPHRASE }}
-          FLUT_APP_IOS_ISSUER_ID: ${{ vars.FLUT_APP_IOS_ISSUER_ID }}
-          FLUT_APP_IOS_KEY_ID: ${{ vars.FLUT_APP_IOS_KEY_ID }}
+          FLUT_APP_IOS_ISSUER_ID: "777fd2ea-e0a9-4fe1-9cc8-212f634cb615"
+          FLUT_APP_IOS_KEY_ID: "B75F755Q64"
 
       - name: Archive ipa
         if: ${{ inputs.ipa == 'true' }}
