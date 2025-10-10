@@ -19,9 +19,11 @@ platform :ios do
 
   # Change this to match your app's key and issuer
   before_all do |lane, options|
+    app_key_id = ENV['FLUT_APP_IOS_KEY_ID']
+    app_issuer_id = ENV['FLUT_APP_IOS_ISSUER_ID']
     app_store_connect_api_key(
-      key_id: ENV['FLUT_APP_IOS_KEY_ID'],
-      issuer_id: ENV['FLUT_APP_IOS_ISSUER_ID'],
+      key_id: app_key_id,
+      issuer_id: app_issuer_id,
       key_filepath: './AuthKey.p8'
     )
     setup_ci if ENV['CI']
@@ -42,7 +44,9 @@ platform :ios do
     git_basic_auth = ENV['MATCH_GIT_BASIC_AUTHORIZATION']
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
 
-    build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{ENV['FLUT_APP_IOS_ISSUER_ID']} -authenticationKeyID #{ENV['FLUT_APP_IOS_KEY_ID']} -authenticationKeyPath ./AuthKey.p8"
+    app_key_id = ENV['FLUT_APP_IOS_KEY_ID']
+    app_issuer_id = ENV['FLUT_APP_IOS_ISSUER_ID']
+    build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{app_issuer_id} -authenticationKeyID #{app_key_id} -authenticationKeyPath ./AuthKey.p8"
     build_ios_app(
         export_method: 'app-store',
         xcargs: build_xcargs
