@@ -351,6 +351,7 @@
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				DEVELOPMENT_TEAM = GH578HKJW8;
 			};
 			name = Profile;
 		};
