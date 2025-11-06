@@ -41,7 +41,7 @@ platform :ios do
   lane :build do
     git_basic_auth = ENV['MATCH_GIT_BASIC_AUTHORIZATION']
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
-    sh("ls", "-la")
+    sh("cat", "../Runner.xcodeproj/project.pbxproj")
     authkey_absolute_path = "#{ENV['GITHUB_WORKSPACE']}/ios/AuthKey.p8"
     build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{ENV['FLUT_APP_IOS_ISSUER_ID']} -authenticationKeyID #{ENV['FLUT_APP_IOS_KEY_ID']} -authenticationKeyPath #{authkey_absolute_path}"
     build_ios_app(
