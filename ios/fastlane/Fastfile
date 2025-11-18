@@ -41,12 +41,25 @@ platform :ios do
   lane :build do
     git_basic_auth = ENV['MATCH_GIT_BASIC_AUTHORIZATION']
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
-    sh("cat", "../Runner.xcodeproj/project.pbxproj")
+
+    app_id = "fr.isenengineering.flut"
+    profile_id = "match AppStore fr.isenengineering.flut"
+    settings_to_override = {
+        :BUNDLE_IDENTIFIER => app_id,
+        :PROVISIONING_PROFILE_SPECIFIER => profile_id,
+        :DEVELOPMENT_TEAM => "GH578HKJW8"
+    }
     authkey_absolute_path = "#{ENV['GITHUB_WORKSPACE']}/ios/AuthKey.p8"
-    build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{ENV['FLUT_APP_IOS_ISSUER_ID']} -authenticationKeyID #{ENV['FLUT_APP_IOS_KEY_ID']} -authenticationKeyPath #{authkey_absolute_path}"
+    # build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{ENV['FLUT_APP_IOS_ISSUER_ID']} -authenticationKeyID #{ENV['FLUT_APP_IOS_KEY_ID']} -authenticationKeyPath #{authkey_absolute_path}"
+    build_xcargs = settings_to_override
     build_ios_app(
         export_method: 'app-store',
-        xcargs: build_xcargs
+        xcargs: build_xcargs,
+        export_options: {
+            provisioningProfiles: {
+                app_id => profile_id
+            }
+        }
     )
   end
 
