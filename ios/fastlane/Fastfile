@@ -49,17 +49,15 @@ platform :ios do
         :PROVISIONING_PROFILE_SPECIFIER => profile_id,
         :DEVELOPMENT_TEAM => "GH578HKJW8"
     }
-    authkey_absolute_path = "#{ENV['GITHUB_WORKSPACE']}/ios/AuthKey.p8"
-    # build_xcargs = "-allowProvisioningUpdates -authenticationKeyIssuerID #{ENV['FLUT_APP_IOS_ISSUER_ID']} -authenticationKeyID #{ENV['FLUT_APP_IOS_KEY_ID']} -authenticationKeyPath #{authkey_absolute_path}"
-    build_xcargs = settings_to_override
     build_ios_app(
         export_method: 'app-store',
-        xcargs: build_xcargs,
+        xcargs: settings_to_override,
         codesigning_identity: "iPhone Distribution",
         sdk: "iphoneos",
         export_options: {
             provisioningProfiles: {
-                app_id => profile_id
+                app_id => profile_id,
+                "io.flutter.flutter.app" => profile_id
             }
         }
     )
