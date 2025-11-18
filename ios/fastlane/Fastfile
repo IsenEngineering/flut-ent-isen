@@ -55,6 +55,8 @@ platform :ios do
     build_ios_app(
         export_method: 'app-store',
         xcargs: build_xcargs,
+        codesigning_identity: "iPhone Distribution",
+        sdk: "iphoneos*",
         export_options: {
             provisioningProfiles: {
                 app_id => profile_id
