@@ -41,6 +41,7 @@ platform :ios do
   lane :build do
     git_basic_auth = ENV['MATCH_GIT_BASIC_AUTHORIZATION']
     match(type: 'appstore', readonly: is_ci, git_basic_authorization: git_basic_auth)
+    disable_automatic_code_signing(path: "Runner.xcodeproj")
 
     app_id = "fr.isenengineering.flut"
     profile_id = "match AppStore fr.isenengineering.flut"
