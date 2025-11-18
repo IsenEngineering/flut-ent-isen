@@ -56,8 +56,7 @@ platform :ios do
         sdk: "iphoneos",
         export_options: {
             provisioningProfiles: {
-                app_id => profile_id,
-                "io.flutter.flutter.app" => profile_id
+                app_id => profile_id
             }
         }
     )
