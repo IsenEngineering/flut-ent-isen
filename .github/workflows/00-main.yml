@@ -39,18 +39,18 @@ jobs:
       apk: "true"
     secrets: inherit
 
-  build-ios:
+#   build-ios:
     # set if false to disable iOS branch of build
 #    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
-    needs:
-      - test
+#     needs:
+#       - test
 #      - conventional-release
 #      - parse-screenshot
-    uses: ./.github/workflows/03-build-ios.yml
-    with:
+#     uses: ./.github/workflows/03-build-ios.yml
+#     with:
 #       screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
-      ipa: "true"
-    secrets: inherit
+#       ipa: "true"
+#     secrets: inherit
 
   upload-android:
 #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
