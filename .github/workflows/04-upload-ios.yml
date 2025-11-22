@@ -39,8 +39,9 @@ jobs:
       - run: bundle exec fastlane upload_testflight
         env:
           RELEASE_NOTES: ${{ inputs.new_release_notes }}
-          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.FLUT_IOS_CERTIFICATES_GH_TOKEN }}
-          MATCH_PASSWORD: ${{ secrets.FLUT_IOS_CERTIFICATES_PASSPHRASE }}
           FLUT_APP_IOS_ISSUER_ID: ${{ vars.FLUT_APP_IOS_ISSUER_ID }}
           FLUT_APP_IOS_KEY_ID: ${{ vars.FLUT_APP_IOS_KEY_ID }}
       - run: bundle exec fastlane upload_metadata_app_store
+        env:
+          FLUT_APP_IOS_ISSUER_ID: ${{ vars.FLUT_APP_IOS_ISSUER_ID }}
+          FLUT_APP_IOS_KEY_ID: ${{ vars.FLUT_APP_IOS_KEY_ID }}
