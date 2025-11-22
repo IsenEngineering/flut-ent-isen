@@ -56,18 +56,21 @@ platform :android do
             sync_image_upload: true,
         )
 
-        # Promote the internal track to alpha
-        upload_to_play_store(
-            track: "internal",
-            track_promote_to: "alpha",
-            json_key_data: json_key,
-            skip_upload_apk: true,
-            skip_upload_aab: true,
-            skip_upload_metadata: true,
-            skip_upload_changelogs: true,
-            skip_upload_images: true,
-            skip_upload_screenshots: true
-        )
+        branch_name = ENV['GITHUB_REF_NAME'] ? ENV['GITHUB_REF_NAME'] : "out-of-ci"
+        if branch_name == "main" || branch_name == "beta"
+            track_promote_channel = branch_name == "main" ? "production" : "beta"
+            # Promote the internal track to the right channel
+            upload_to_play_store(
+                track: "internal",
+                track_promote_to: track_promote_channel,
+                json_key_data: json_key,
+                skip_upload_apk: true,
+                skip_upload_aab: true,
+                skip_upload_metadata: true,
+                skip_upload_changelogs: true,
+                skip_upload_images: true,
+                skip_upload_screenshots: true
+            )
     end
 
     lane :build do
