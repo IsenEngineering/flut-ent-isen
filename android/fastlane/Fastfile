@@ -71,6 +71,7 @@ platform :android do
                 skip_upload_images: true,
                 skip_upload_screenshots: true
             )
+        end
     end
 
     lane :build do
