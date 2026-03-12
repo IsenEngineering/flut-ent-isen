@@ -18,12 +18,12 @@ jobs:
   #    uses: ./.github/workflows/02-conventional-release.yml
   #    secrets: inherit
 
-    parse-screenshot:
-      uses: ./.github/workflows/01-parse-screenshot.yml
-      with:
-        # Set to empty string to always take screenshots
-       #  screenshot-text: "SCREENSHOT"
-        screenshot-text: ""
+  parse-screenshot:
+    uses: ./.github/workflows/01-parse-screenshot.yml
+    with:
+      # Set to empty string to always take screenshots
+     #  screenshot-text: "SCREENSHOT"
+      screenshot-text: ""
 
 #   build-android:
     # set if false to disable android branch of build
