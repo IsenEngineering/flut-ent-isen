@@ -63,6 +63,7 @@ jobs:
           api-level: ${{ env.API_LEVEL }}
           profile: ${{ matrix.model }}
           target: google_apis
+          arch: x86_64
           cores: ${{ env.CORES }}
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
@@ -75,6 +76,7 @@ jobs:
           api-level: ${{ env.API_LEVEL }}
           profile: ${{ matrix.model }}
           target: google_apis
+          arch: x86_64
           cores: ${{ env.CORES }}
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
