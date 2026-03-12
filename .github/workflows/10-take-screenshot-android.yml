@@ -13,7 +13,7 @@ on:
 
 jobs:
   take-screenshot-android:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
       API_LEVEL: ${{ inputs.api_level }}
@@ -49,7 +49,7 @@ jobs:
             ~/.android/adb*
           key: avd-${{ env.API_LEVEL }}
 
-      - name: create AVD and generate snapshot for caching
+      - name: create AVD
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -58,7 +58,7 @@ jobs:
           target: google_apis
           cores: ${{ env.CORES }}
           force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
           disable-animations: false
           script: avdmanager list device
 
