@@ -60,7 +60,7 @@ jobs:
       - build-android
     uses: ./.github/workflows/10-take-screenshot-android.yml
     with:
-      api_level: 30
+      api_level: 34
       model: "['pixel_6']"
 
 #   upload-android:
