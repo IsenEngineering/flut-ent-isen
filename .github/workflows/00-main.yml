@@ -18,12 +18,12 @@ jobs:
   #    uses: ./.github/workflows/02-conventional-release.yml
   #    secrets: inherit
 
-  # TODO: implement automatic screenshots
-  # parse-screenshot:
-  #    uses: ./.github/workflows/11-parse-screenshot.yml
-  #    with:
-  #      # Set to empty string to always take screenshots
-  #      screenshot-text: "SCREENSHOT"
+    parse-screenshot:
+      uses: ./.github/workflows/01-parse-screenshot.yml
+      with:
+        # Set to empty string to always take screenshots
+       #  screenshot-text: "SCREENSHOT"
+        screenshot-text: ""
 
 #   build-android:
     # set if false to disable android branch of build
@@ -66,14 +66,14 @@ jobs:
 #       new_release_notes: "test release notes"
 #     secrets: inherit
 
-  upload-ios:
-#     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
-    needs:
-#       - parse-screenshot
-      - build-ios
-#       - conventional-release
-    uses: ./.github/workflows/04-upload-ios.yml
-    with:
-      new_release: "v1.0.1"
-      new_release_notes: "test release notes"
-    secrets: inherit
+#  upload-ios:
+##     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
+#    needs:
+##       - parse-screenshot
+#      - build-ios
+##       - conventional-release
+#    uses: ./.github/workflows/04-upload-ios.yml
+#    with:
+#      new_release: "v1.0.1"
+#      new_release_notes: "test release notes"
+#    secrets: inherit
