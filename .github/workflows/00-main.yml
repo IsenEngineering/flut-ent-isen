@@ -25,32 +25,43 @@ jobs:
      #  screenshot-text: "SCREENSHOT"
       screenshot-text: ""
 
-#   build-android:
+  build-android:
     # set if false to disable android branch of build
-#     if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
-#     needs:
-#       - test
-#    needs:
-#      - conventional-release
-#      - parse-screenshot
-#     uses: ./.github/workflows/03-build-android.yml
-#     with:
-      # screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
-#       apk: "true"
-#     secrets: inherit
-
-  build-ios:
-    # set if false to disable iOS branch of build
-#    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
+    # if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
     needs:
-      - test
-#      - conventional-release
-#      - parse-screenshot
-    uses: ./.github/workflows/03-build-ios.yml
+    - test
+    - parse-screenshot
+    #    needs:
+    #      - conventional-release
+    #      - parse-screenshot
+    uses: ./.github/workflows/03-build-android.yml
     with:
-#       screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
-      ipa: "true"
+      screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
+      apk: "true"
     secrets: inherit
+
+#  build-ios:
+#    # set if false to disable iOS branch of build
+##    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
+#    needs:
+#      - test
+##      - conventional-release
+##      - parse-screenshot
+#    uses: ./.github/workflows/03-build-ios.yml
+#    with:
+##       screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
+#      ipa: "true"
+#    secrets: inherit
+
+  integration-screenshot-android:
+    if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'true' }}
+    needs:
+      - parse-screenshot
+      - build-android
+    uses: ./.github/workflows/10-take-screenshot-android.yml
+    with:
+      api_level: 30
+      model: "['pixel_6']"
 
 #   upload-android:
 #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
