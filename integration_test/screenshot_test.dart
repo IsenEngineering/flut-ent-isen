@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flut/main_handler.dart';
+import 'package:flut/main.dart';
 import 'package:flut/services/token_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -27,7 +27,7 @@ void main() {
 
 Future<void> testRenderHome(
     WidgetTester tester, IntegrationTestWidgetsFlutterBinding binding) async {
-  await tester.pumpWidget(MainHandler());
+  await tester.pumpWidget(MyApp());
   await tester.pumpAndSettle();
   await binding.takeScreenshot('0-home');
 }
