@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flut/main.dart';
 import 'package:flut/services/token_service.dart';
+import 'package:flut/services/user_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -11,6 +12,7 @@ void main() {
   group('Screenshot tests', () {
     setUpAll(() {
       TokenManager.getInstance().setToken('FAKETOKEN');
+      UserManager.getInstance().setUsername('ronald.weasley');
       return Future(() async {
         WidgetsApp.debugAllowBannerOverride = false; // Hide the debug banner
         if (Platform.isAndroid) {
