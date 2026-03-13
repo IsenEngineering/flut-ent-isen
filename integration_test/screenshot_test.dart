@@ -43,12 +43,16 @@ Future<void> testRenderHome(
     WidgetTester tester, IntegrationTestWidgetsFlutterBinding binding) async {
   await tester.pumpWidget(MyApp(initialPage: 0));
   await tester.pumpAndSettle();
+  await Future.delayed(const Duration(seconds: 1));
+  await tester.pumpAndSettle();
   await binding.takeScreenshot('0-home');
 }
 
 Future<void> testRenderPlanning(
     WidgetTester tester, IntegrationTestWidgetsFlutterBinding binding) async {
   await tester.pumpWidget(MyApp(initialPage: 1));
+  await tester.pumpAndSettle();
+  await Future.delayed(const Duration(seconds: 1));
   await tester.pumpAndSettle();
   await binding.takeScreenshot('1-planning');
 }
@@ -57,12 +61,16 @@ Future<void> testRenderNotes(
     WidgetTester tester, IntegrationTestWidgetsFlutterBinding binding) async {
   await tester.pumpWidget(MyApp(initialPage: 2));
   await tester.pumpAndSettle();
+  await Future.delayed(const Duration(seconds: 1));
+  await tester.pumpAndSettle();
   await binding.takeScreenshot('2-notes');
 }
 
 Future<void> testRenderAbsences(
     WidgetTester tester, IntegrationTestWidgetsFlutterBinding binding) async {
   await tester.pumpWidget(MyApp(initialPage: 3));
+  await tester.pumpAndSettle();
+  await Future.delayed(const Duration(seconds: 1));
   await tester.pumpAndSettle();
   await binding.takeScreenshot('3-absences');
 }
