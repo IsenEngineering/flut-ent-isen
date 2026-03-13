@@ -15,7 +15,7 @@ class MainHandler extends StatefulWidget {
 }
 
 class MainHandlerState extends State<MainHandler> {
-  final _pageController = PageController();
+  late final PageController _pageController;
 
   late int _selectedPage;
   // TODO: return button on Android should go back to previous selected page
@@ -31,6 +31,7 @@ class MainHandlerState extends State<MainHandler> {
   void initState() {
     super.initState();
     _selectedPage = widget.initialPage;
+    _pageController = PageController(initialPage: widget.initialPage);
   }
 
   void _onItemTap(int itemIndex) {
