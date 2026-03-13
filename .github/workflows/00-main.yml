@@ -69,7 +69,7 @@ jobs:
       - build-ios
     uses: ./.github/workflows/10-take-screenshot-ios.yml
     with:
-      model: "['iPhone 13 Pro Max', 'iPad Pro (12.9-inch) (5th generation)']"
+      model: "['iPhone 16 Pro Max', 'iPad Pro 13-inch (M4)']"
 
 #   upload-android:
 #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
