@@ -113,3 +113,28 @@ jobs:
 #      new_release: "v1.0.1"
 #      new_release_notes: "test release notes"
 #    secrets: inherit
+
+  upload-android-with-screenshots:
+    needs:
+    - integration-screenshot-commit-android
+    uses: ./.github/workflows/04-upload-android.yml
+#    with:
+#      new_release: ${{ needs.conventional-release.outputs.new_release }}
+#      new_release_notes: ${{ needs.conventional-release.outputs.new_release_notes }}
+    with:
+      new_release: "v1.0.1"
+      new_release_notes: "test release notes"
+    secrets: inherit
+
+  upload-ios-with-screenshots:
+    #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
+    needs:
+      - integration-screenshot-commit-ios
+    uses: ./.github/workflows/04-upload-ios.yml
+#    with:
+#      new_release: ${{ needs.conventional-release.outputs.new_release }}
+#      new_release_notes: ${{ needs.conventional-release.outputs.new_release_notes }}
+    with:
+      new_release: "v1.0.1"
+      new_release_notes: "test release notes"
+    secrets: inherit
