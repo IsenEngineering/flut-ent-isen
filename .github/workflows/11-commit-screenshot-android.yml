@@ -28,12 +28,15 @@ jobs:
           mkdir -p android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
           ls -lR ./screenshots
           ls -la ./screenshots/android*
+          git status
           cp ./screenshots/android*/* android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
+          git status
           ls -la android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
 
       - name: Check for changes in android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
         id: git-diff
         run: |
+          git status
           git diff --quiet -- 'android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots' || (echo "Changes exist in android screenshots" && echo changes=true >> $GITHUB_OUTPUT)
         continue-on-error: true
 
