@@ -6,7 +6,9 @@ import 'package:flut/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainHandler extends StatefulWidget {
-  const MainHandler({super.key});
+  const MainHandler({super.key, this.initialPage = 0});
+
+  final int initialPage;
 
   @override
   MainHandlerState createState() => MainHandlerState();
@@ -15,7 +17,7 @@ class MainHandler extends StatefulWidget {
 class MainHandlerState extends State<MainHandler> {
   final _pageController = PageController();
 
-  int _selectedPage = 0;
+  late int _selectedPage;
   // TODO: return button on Android should go back to previous selected page
   // int _previousSelectedPage = 0;
   final List<Widget> _screensList = const <Widget>[
@@ -24,6 +26,12 @@ class MainHandlerState extends State<MainHandler> {
     NotesScreen(),
     AbsenceView()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPage = widget.initialPage;
+  }
 
   void _onItemTap(int itemIndex) {
     setState(() {

@@ -12,7 +12,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.initialPage = 0});
+
+  final int initialPage;
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +59,8 @@ class MyApp extends StatelessWidget {
           )
 
         ),
-        home: MainHandler(),
+        home: MainHandler(initialPage: initialPage),
       ),
     );
   }
-
 }
