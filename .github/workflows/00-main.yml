@@ -25,43 +25,51 @@ jobs:
      #  screenshot-text: "SCREENSHOT"
       screenshot-text: ""
 
-  build-android:
-    # set if false to disable android branch of build
-    # if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
-    needs:
-    - test
-    - parse-screenshot
-    #    needs:
-    #      - conventional-release
-    #      - parse-screenshot
-    uses: ./.github/workflows/03-build-android.yml
-    with:
-      screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
-      apk: "true"
-    secrets: inherit
-
-#  build-ios:
-#    # set if false to disable iOS branch of build
-##    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
+#  build-android:
+#    # set if false to disable android branch of build
+#    # if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
 #    needs:
-#      - test
-##      - conventional-release
-##      - parse-screenshot
-#    uses: ./.github/workflows/03-build-ios.yml
+#    - test
+#    - parse-screenshot
+#    #    needs:
+#    #      - conventional-release
+#    #      - parse-screenshot
+#    uses: ./.github/workflows/03-build-android.yml
 #    with:
-##       screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
-#      ipa: "true"
+#      screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
+#      apk: "true"
 #    secrets: inherit
 
-  integration-screenshot-android:
+  build-ios:
+    # set if false to disable iOS branch of build
+#    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
+    needs:
+      - test
+      - parse-screenshot
+#      - conventional-release
+    uses: ./.github/workflows/03-build-ios.yml
+    with:
+      screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
+      ipa: "true"
+    secrets: inherit
+
+#  integration-screenshot-android:
+#    if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'true' }}
+#    needs:
+#      - parse-screenshot
+#      - build-android
+#    uses: ./.github/workflows/10-take-screenshot-android.yml
+#    with:
+#      api_level: 34
+#      model: "['pixel_6']"
+  integration-screenshot-ios:
     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'true' }}
     needs:
       - parse-screenshot
-      - build-android
-    uses: ./.github/workflows/10-take-screenshot-android.yml
+      - build-ios
+    uses: ./.github/workflows/10-take-screenshot-ios.yml
     with:
-      api_level: 34
-      model: "['pixel_6']"
+      model: "['iPhone 13 Pro Max', 'iPad Pro (12.9-inch) (5th generation)']"
 
 #   upload-android:
 #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}

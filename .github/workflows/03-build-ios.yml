@@ -2,20 +2,20 @@ name: build-ios
 on:
   workflow_call:
     inputs:
-#      screenshot:
-#        type: string
-#        required: true
+      screenshot:
+        type: string
+        required: true
       ipa:
         description: 'Run IPA build'
         type: string
         required: true
   workflow_dispatch:
     inputs:
-#      screenshot:
-#        description: 'Run screenshot build'
-#        type: choice
-#        options:  ['true', 'false']
-#        required: true
+      screenshot:
+        description: 'Run screenshot build'
+        type: choice
+        options:  ['true', 'false']
+        required: true
       ipa:
         description: 'Run IPA build'
         type: choice
@@ -49,22 +49,21 @@ jobs:
 
       - name: Flutter
         uses: subosito/flutter-action@v2
-# TODO: activate back cache
-#         with:
-#           cache: true
-#           cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
-#           cache-path: "${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:"
-#      - run: flutter build ios --simulator --target=integration_test/screenshot_test.dart
-#        if: ${{ inputs.screenshot == 'true' }}
-#
-#      - name: Archive integration ipa
-#        if: ${{ inputs.screenshot == 'true' }}
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: app-simulator-build
-#          path: build/ios/iphonesimulator/Runner.app
-#          if-no-files-found: error
-#          retention-days: 3
+        with:
+          cache: true
+          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
+          cache-path: "${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:"
+      - run: flutter build ios --simulator --target=integration_test/screenshot_test.dart
+        if: ${{ inputs.screenshot == 'true' }}
+
+      - name: Archive integration ipa
+        if: ${{ inputs.screenshot == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-simulator-build
+          path: build/ios/iphonesimulator/Runner.app
+          if-no-files-found: error
+          retention-days: 3
 
       # Build ios Release
       - run: flutter build ios --release --config-only --no-codesign --target=lib/main.dart
