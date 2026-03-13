@@ -26,7 +26,10 @@ jobs:
       - name: Move android screenshots
         run: |
           mkdir -p android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
+          ls -lR ./screenshots
+          ls -la ./screenshots/android*
           cp ./screenshots/android*/* android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
+          ls -la android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
 
       - name: Check for changes in android/fastlane/metadata/android/${{ matrix.locale }}/images/phoneScreenshots
         id: git-diff
