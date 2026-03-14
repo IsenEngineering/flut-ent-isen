@@ -80,13 +80,13 @@ jobs:
       locale: "['fr-FR']"
     secrets: inherit
 
-#  integration-screenshot-commit-ios:
-#    needs:
-#      - integration-screenshot-ios
-#    uses: ./.github/workflows/11-commit-screenshot-ios.yml
-#    with:
-#      locale: "['fr-FR']"
-#    secrets: inherit
+  integration-screenshot-commit-ios:
+    needs:
+      - integration-screenshot-ios
+    uses: ./.github/workflows/11-commit-screenshot-ios.yml
+    with:
+      locale: "['fr-FR']"
+    secrets: inherit
 
 #   upload-android:
 #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
