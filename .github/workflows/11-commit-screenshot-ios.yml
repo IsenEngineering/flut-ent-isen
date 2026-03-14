@@ -26,7 +26,7 @@ jobs:
       - name: Move ios screenshots
         run: |
           mkdir -p ios/fastlane/screenshots/${{ matrix.locale }}
-          cp ./screenshots/android*/* ios/fastlane/screenshots/${{ matrix.locale }}
+          cp ./screenshots/ios*/* ios/fastlane/screenshots/${{ matrix.locale }}
 
       - name: Check for changes in ios/fastlane/screenshots/${{ matrix.locale }}
         id: git-diff
