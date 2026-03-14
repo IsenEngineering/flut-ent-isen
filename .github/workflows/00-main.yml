@@ -40,18 +40,18 @@ jobs:
       apk: "true"
     secrets: inherit
 
-#  build-ios:
-#    # set if false to disable iOS branch of build
-##    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
-#    needs:
-#      - test
-#      - parse-screenshot
-##      - conventional-release
-#    uses: ./.github/workflows/03-build-ios.yml
-#    with:
-#      screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
-#      ipa: "true"
-#    secrets: inherit
+  build-ios:
+    # set if false to disable iOS branch of build
+#    if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
+    needs:
+      - test
+      - parse-screenshot
+#      - conventional-release
+    uses: ./.github/workflows/03-build-ios.yml
+    with:
+      screenshot: ${{ needs.parse-screenshot.outputs.contains_screenshot }}
+      ipa: "true"
+    secrets: inherit
 
   integration-screenshot-android:
     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'true' }}
@@ -63,14 +63,14 @@ jobs:
       api_level: 34
       model: "['pixel_6']"
 
-#  integration-screenshot-ios:
-#    if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'true' }}
-#    needs:
-#      - parse-screenshot
-#      - build-ios
-#    uses: ./.github/workflows/10-take-screenshot-ios.yml
-#    with:
-#      model: "['iPhone 16 Pro Max', 'iPad Pro 13-inch (M4)']"
+  integration-screenshot-ios:
+    if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'true' }}
+    needs:
+      - parse-screenshot
+      - build-ios
+    uses: ./.github/workflows/10-take-screenshot-ios.yml
+    with:
+      model: "['iPhone 16 Pro Max', 'iPad Pro 13-inch (M4)']"
 
   integration-screenshot-commit-android:
     needs:
@@ -114,27 +114,27 @@ jobs:
 #      new_release_notes: "test release notes"
 #    secrets: inherit
 
-#  upload-android-with-screenshots:
-#    needs:
-#    - integration-screenshot-commit-android
-#    uses: ./.github/workflows/04-upload-android.yml
-##    with:
-##      new_release: ${{ needs.conventional-release.outputs.new_release }}
-##      new_release_notes: ${{ needs.conventional-release.outputs.new_release_notes }}
+  upload-android-with-screenshots:
+    needs:
+    - integration-screenshot-commit-android
+    uses: ./.github/workflows/04-upload-android.yml
 #    with:
-#      new_release: "v1.0.1"
-#      new_release_notes: "test release notes"
-#    secrets: inherit
+#      new_release: ${{ needs.conventional-release.outputs.new_release }}
+#      new_release_notes: ${{ needs.conventional-release.outputs.new_release_notes }}
+    with:
+      new_release: "v1.0.1"
+      new_release_notes: "test release notes"
+    secrets: inherit
 
-#  upload-ios-with-screenshots:
-#    #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
-#    needs:
-#      - integration-screenshot-commit-ios
-#    uses: ./.github/workflows/04-upload-ios.yml
-##    with:
-##      new_release: ${{ needs.conventional-release.outputs.new_release }}
-##      new_release_notes: ${{ needs.conventional-release.outputs.new_release_notes }}
+  upload-ios-with-screenshots:
+    #     if: ${{ needs.parse-screenshot.outputs.contains_screenshot == 'false' }}
+    needs:
+      - integration-screenshot-commit-ios
+    uses: ./.github/workflows/04-upload-ios.yml
 #    with:
-#      new_release: "v1.0.1"
-#      new_release_notes: "test release notes"
-#    secrets: inherit
+#      new_release: ${{ needs.conventional-release.outputs.new_release }}
+#      new_release_notes: ${{ needs.conventional-release.outputs.new_release_notes }}
+    with:
+      new_release: "v1.0.1"
+      new_release_notes: "test release notes"
+    secrets: inherit
