@@ -19,12 +19,12 @@ jobs:
       run:
         working-directory: ios
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Download app
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: Runner.ipa
           path: ios/
