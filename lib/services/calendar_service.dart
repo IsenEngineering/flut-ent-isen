@@ -6,7 +6,7 @@ class CalendarEventProvider with ChangeNotifier {
 
   List<CalendarEvent>? get events => _events;
 
-  fetchEvents(String login) async {
+  void fetchEvents(String login) async {
     _events = await IcsParser.parse(login);
     notifyListeners();
   }

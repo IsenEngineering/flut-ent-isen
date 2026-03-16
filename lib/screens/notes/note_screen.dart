@@ -6,18 +6,17 @@ import '../../model/notation.dart';
 import '../../services/api_service.dart';
 import '../../services/cache.dart';
 import '../../services/token_service.dart';
-import '../../widgets/hamburger_menu.dart';
 import 'note_detail.dart'; // Importer la nouvelle classe
 import 'package:auto_size_text/auto_size_text.dart';
 
 class NotesScreen extends StatefulWidget {
-  const NotesScreen({Key? key}) : super(key: key);
+  const NotesScreen({super.key});
 
   @override
-  _NotesScreenState createState() => _NotesScreenState();
+  NotesScreenState createState() => NotesScreenState();
 }
 
-class _NotesScreenState extends State<NotesScreen> {
+class NotesScreenState extends State<NotesScreen> {
   final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
   final String token = TokenManager.getInstance().getToken();
 
@@ -31,13 +30,13 @@ class _NotesScreenState extends State<NotesScreen> {
 
     _notationsFuture = apiService.fetchNotations(token);
   }
-
-  void _updateCache() async {
+  // TODO: redo cache management
+  /* void _updateCache() async {
     List<Notation> notations = await apiService.fetchNotations(token);
 
     String jsonString = jsonEncode(notations.map((e) => e.toJSON()).toList());
     await writeToCache(cacheFileName, jsonString);
-  }
+  } */
 
   Future<List<Notation>> _retrieveDataFromCache() async {
     String? cacheValue = await readFromCache(cacheFileName);

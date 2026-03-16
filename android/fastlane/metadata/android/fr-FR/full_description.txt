@@ -1,0 +1,7 @@
+Flut, le nouvel ENT de l'ISEN Méditerranée !
+Retrouve ton planning, tes notes et tes absences dans une seule application moderne !
+
+Projet issu de la Nuit de l'ISEN, Flut est un ENT alternatif non-officiel pour les étudiants de l'ISEN Méditerranée créé par les associations étudiantes ISEN Engineering et ISEN Repair.
+
+Pour toutes réclamations, envoyez un mail à support@isenengineering.fr
+Pour participer au développement de l'application, rejoignez le projet GitHub : https://github.com/JacksonKyoshi/ENT-ISEN-FLUT

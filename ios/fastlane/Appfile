@@ -1,0 +1,4 @@
+app_identifier("fr.isenengineering.flut") # The bundle identifier of your app
+apple_id("flut-app@isenengineering.fr") # Your Apple email address
+itc_team_id("127719760") # App Store Connect Team ID
+team_id("GH578HKJW8") # Developer Portal Team ID

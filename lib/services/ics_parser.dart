@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:icalendar_parser/icalendar_parser.dart';
 import 'package:http/http.dart' as http;
 
@@ -54,8 +53,8 @@ class CalendarEvent {
     return CalendarEvent(
       summary: summary,
       description: description,
-      start: start != null ? start.toDateTime() : null,
-      end: end != null ? end.toDateTime() : null,
+      start: start.toDateTime(),
+      end: end.toDateTime(),
       location: null, // location is not present in the JSON
       url: null, // url is not present in the JSON
       attendees: null, // attendees is not present in the JSON

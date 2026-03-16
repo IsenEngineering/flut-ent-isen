@@ -6,17 +6,20 @@ import 'package:flut/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainHandler extends StatefulWidget {
-  const MainHandler({super.key});
+  const MainHandler({super.key, this.initialPage = 0});
+
+  final int initialPage;
 
   @override
-  _MainHandlerState createState() => _MainHandlerState();
+  MainHandlerState createState() => MainHandlerState();
 }
 
-class _MainHandlerState extends State<MainHandler> {
-  final _pageController = PageController();
+class MainHandlerState extends State<MainHandler> {
+  late final PageController _pageController;
 
-  int _selectedPage = 0;
-  int _previousSelectedPage = 0;
+  late int _selectedPage;
+  // TODO: return button on Android should go back to previous selected page
+  // int _previousSelectedPage = 0;
   final List<Widget> _screensList = const <Widget>[
     HomeScreen(),
     CalendarScreen(),
@@ -24,10 +27,17 @@ class _MainHandlerState extends State<MainHandler> {
     AbsenceView()
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    _selectedPage = widget.initialPage;
+    _pageController = PageController(initialPage: widget.initialPage);
+  }
+
   void _onItemTap(int itemIndex) {
     setState(() {
         if (_selectedPage != itemIndex) {
-          _previousSelectedPage = _selectedPage;
+          // _previousSelectedPage = _selectedPage;
           _selectedPage = itemIndex;
         }
     });
@@ -36,7 +46,7 @@ class _MainHandlerState extends State<MainHandler> {
 
   void _onPageChanged(int itemIndex) {
     setState(() {
-      _previousSelectedPage = _selectedPage;
+      // _previousSelectedPage = _selectedPage;
       _selectedPage = itemIndex;
     });
   }

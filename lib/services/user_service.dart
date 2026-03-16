@@ -1,7 +1,7 @@
 
 //Classe qui va gérer le username
 class UserManager {
-  static UserManager _instance = UserManager._internal();
+  static final UserManager _instance = UserManager._internal();
   late String _username;
   UserManager._internal();
 

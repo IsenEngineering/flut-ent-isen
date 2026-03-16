@@ -1,11 +1,9 @@
 import 'package:flut/main_handler.dart';
-import 'package:flut/services/token_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 import 'services/calendar_service.dart';
-import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
 
 
@@ -14,6 +12,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key, this.initialPage = 0});
+
+  final int initialPage;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -57,9 +59,8 @@ class MyApp extends StatelessWidget {
           )
 
         ),
-        home: MainHandler(),
+        home: MainHandler(initialPage: initialPage),
       ),
     );
   }
-
 }

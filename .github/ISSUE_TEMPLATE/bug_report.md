@@ -22,7 +22,7 @@ Describe how you expected the application to work.
 
 ## Actual Behavior
 <!--
-Describe how the API really works
+Describe how the application really works
 You can provide a screenshot to help us
 BEWARE: HIDE ANY SENSITIVE DATA FROM YOUR SCREENSHOT
 THIS APPLICATION CAN SEND SENSITIVE DATA AND THIS ISSUE IS PUBLIC

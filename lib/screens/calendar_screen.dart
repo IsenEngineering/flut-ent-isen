@@ -8,19 +8,21 @@ import '../services/cache.dart';
 import '../services/token_service.dart';
 import '../widgets/day_view.dart';
 import '../widgets/event_detail.dart';
-import '../widgets/week_view.dart';
 import '../model/calendar_event.dart';
 
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({Key? key}) : super(key: key);
+  final ApiService? apiService;
+  final String? token;
+
+  const CalendarScreen({super.key, this.apiService, this.token});
 
   @override
-  _CalendarScreenState createState() => _CalendarScreenState();
+  CalendarScreenState createState() => CalendarScreenState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
-  final ApiService apiService = ApiService('https://api-ent.isenengineering.fr');
-  final String token = TokenManager.getInstance().getToken();
+class CalendarScreenState extends State<CalendarScreen> {
+  late final ApiService apiService;
+  late final String token;
 
   DateTime selectedDay = DateTime.now();
   CalendarEvent? selectedEvent; // Now CalendarEvent should be recognized
@@ -32,6 +34,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   void initState() {
     super.initState();
+
+    apiService = widget.apiService ?? ApiService('https://api-ent.isenengineering.fr');
+    token = widget.token ?? TokenManager.getInstance().getToken();
+
     selectedDay = DateTime.now(); // Set selectedDay to the current day
     if (selectedDay.weekday == DateTime.sunday) {
       selectedDay = selectedDay.add(const Duration(days: 1));
@@ -298,7 +304,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     child: TextButton(
                       onPressed: onSelectDay,
                       child: Text(
-                      "${DateFormat("E dd MMM yyyy", "fr-FR").format(selectedDay)}",
+                      DateFormat("E dd MMM yyyy", "fr-FR").format(selectedDay),
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge
                       )
