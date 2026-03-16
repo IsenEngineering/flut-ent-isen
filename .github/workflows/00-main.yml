@@ -27,7 +27,6 @@ jobs:
     # set if false to disable android branch of build
     if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
     needs:
-    - test
     - parse-screenshot
     - conventional-release
     uses: ./.github/workflows/03-build-android.yml
@@ -40,7 +39,6 @@ jobs:
     # set if false to disable iOS branch of build
     if: ${{ needs.conventional-release.outputs.new_release_published == 'true' }}
     needs:
-      - test
       - parse-screenshot
       - conventional-release
     uses: ./.github/workflows/03-build-ios.yml
