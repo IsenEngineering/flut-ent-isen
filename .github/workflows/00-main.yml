@@ -19,7 +19,7 @@ jobs:
 
   conventional-release:
     needs:
-      - test-analyze
+      - test
     uses: ./.github/workflows/02-conventional-release.yml
     secrets: inherit
 
